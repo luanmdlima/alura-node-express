@@ -1,18 +1,7 @@
-import * as http from "http";
-import nodemon from "nodemon";
+import app from "./src/app.js";
 
-const port = 3000;
-const routes = {
-	"/": "Hello World!",
-	"/about": "About Me",
-	"/contact": "Contact Me",
-};
+const port = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
-	res.writeHead(200, { "Content-Type": "text/plain" });
-	res.end(req.url in routes ? routes[req.url] : "Not Found");
-});
-
-server.listen(port, () => {
+app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}/`);
 });
